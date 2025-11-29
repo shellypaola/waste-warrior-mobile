@@ -1,0 +1,45 @@
+📁 WASTE WARRIOR EXPO - FILE STRUCTURE
+=====================================
+
+Your GitHub repo should look like this:
+
+waste-warrior-mobile/
+│
+├── 📄 App.js                         ← Main entry point
+├── 📄 app.json                       ← Expo config (name, icons, etc.)
+├── 📄 package.json                   ← Dependencies list
+├── 📄 README.md                      ← Instructions
+├── 📄 .gitignore                     ← Ignore node_modules
+│
+└── 📁 src/
+    │
+    ├── 📄 colors.js                  ⭐ MASTER COLOR FILE
+    │                                    - Classic Blue #3B82F6
+    │                                    - All colors from design system
+    │                                    - NEVER modify this file
+    │
+    └── 📁 screens/
+        │
+        └── 📄 SplashScreen.js        ✅ COMPLETED
+                                         - Blue gradient background
+                                         - W logo with leaf
+                                         - "WASTE WARRIOR" text
+
+=====================================
+
+⚠️ CRITICAL: Make sure to upload the ENTIRE src folder with:
+   - src/colors.js
+   - src/screens/SplashScreen.js
+
+If you miss any file, the app won't work!
+
+=====================================
+
+✅ CHECKLIST BEFORE TESTING:
+
+[ ] All 7 files uploaded to GitHub
+[ ] src folder structure is correct
+[ ] Expo Go app installed on phone
+[ ] Ready to scan QR code
+
+=====================================
