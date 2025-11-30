@@ -1,19 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Animated } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { colors, gradients } from '../colors';
 
 const SplashScreen = () => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(30)).current;
-  
-  // Three separate animations for each dot
   const dot1 = useRef(new Animated.Value(0)).current;
   const dot2 = useRef(new Animated.Value(0)).current;
   const dot3 = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    // Fade in and slide up animation
     Animated.parallel([
       Animated.timing(fadeAnim, {
         toValue: 1,
@@ -27,8 +23,7 @@ const SplashScreen = () => {
       }),
     ]).start();
 
-    // Bouncing dots animation
-    const bounceDot = (dot, delay) => {
+    const createBounce = (dot, delay) => {
       return Animated.loop(
         Animated.sequence([
           Animated.delay(delay),
@@ -46,17 +41,16 @@ const SplashScreen = () => {
       );
     };
 
-    // Start all three dots with staggered delays
     Animated.parallel([
-      bounceDot(dot1, 0),
-      bounceDot(dot2, 150),
-      bounceDot(dot3, 300),
+      createBounce(dot1, 0),
+      createBounce(dot2, 150),
+      createBounce(dot3, 300),
     ]).start();
   }, []);
 
   return (
     <LinearGradient
-      colors={gradients.primary}
+      colors={['#3B82F6', '#1D4ED8']}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       style={styles.container}
@@ -70,7 +64,6 @@ const SplashScreen = () => {
           },
         ]}
       >
-        {/* Logo Container */}
         <View style={styles.logoContainer}>
           <LinearGradient
             colors={['#60A5FA', '#3B82F6']}
@@ -85,32 +78,13 @@ const SplashScreen = () => {
           </LinearGradient>
         </View>
 
-        {/* App Name */}
         <Text style={styles.appName}>WASTE WARRIOR</Text>
-
-        {/* Tagline */}
         <Text style={styles.tagline}>Track. Reduce. Give Back.</Text>
 
-        {/* Bouncing Dots Loader */}
         <View style={styles.dotsContainer}>
-          <Animated.View
-            style={[
-              styles.dot,
-              { transform: [{ translateY: dot1 }] },
-            ]}
-          />
-          <Animated.View
-            style={[
-              styles.dot,
-              { transform: [{ translateY: dot2 }] },
-            ]}
-          />
-          <Animated.View
-            style={[
-              styles.dot,
-              { transform: [{ translateY: dot3 }] },
-            ]}
-          />
+          <Animated.View style={[styles.dot, { transform: [{ translateY: dot1 }] }]} />
+          <Animated.View style={[styles.dot, { transform: [{ translateY: dot2 }] }]} />
+          <Animated.View style={[styles.dot, { transform: [{ translateY: dot3 }] }]} />
         </View>
       </Animated.View>
     </LinearGradient>
@@ -137,12 +111,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 4,
     borderColor: 'rgba(255, 255, 255, 0.3)',
-    // Shadow for iOS
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.3,
     shadowRadius: 16,
-    // Shadow for Android
     elevation: 10,
   },
   logoContent: {
@@ -179,13 +151,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 24,
-    gap: 8,
   },
   dot: {
     width: 8,
     height: 8,
     borderRadius: 4,
     backgroundColor: '#DBEAFE',
+    marginHorizontal: 4,
   },
 });
 
