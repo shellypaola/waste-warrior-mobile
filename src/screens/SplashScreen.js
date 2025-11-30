@@ -34,12 +34,12 @@ const SplashScreen = () => {
           Animated.delay(delay),
           Animated.timing(dot, {
             toValue: -10,
-            duration: 400,
+            duration: 600,
             useNativeDriver: true,
           }),
           Animated.timing(dot, {
             toValue: 0,
-            duration: 400,
+            duration: 600,
             useNativeDriver: true,
           }),
         ])
